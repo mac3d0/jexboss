@@ -1,36 +1,21 @@
 # Changelog
 
-All notable changes made in this fork, relative to the upstream
-[JexBoss](https://github.com/joaomatosf/jexboss) by João Filho Matos Figueiredo.
+Changes made in this fork on top of the upstream JexBoss by João Filho Matos Figueiredo, at https://github.com/joaomatosf/jexboss
 
-## [fork] — 2026
+## Fork, 2026
 
-### Added
-- **`shodan-scan` operation mode** — collects candidate targets directly from the
-  Shodan API via `shodan_search()`, with new CLI flags:
-  `-shodan-query`, `-shodan-apikey` (or `SHODAN_API_KEY` env var), `-shodan-limit`
-  and `-shodan-results`. Implemented over the existing HTTP pool, with no
-  additional pip dependency.
-- **Interactive authorization gate** for the Shodan bulk-scan workflow, requiring
-  the operator to explicitly confirm authorization before any target collected
-  from Shodan is scanned.
-- **Live progress bar** (`progress_bar_str`, `print_progress_bar`) for bulk and
-  file-based scan loops — a single-line, in-place indicator shared across the
-  Shodan and file-interactive views.
+Added a `shodan-scan` operation mode. It collects candidate targets from the Shodan API through `shodan_search()`, with the new flags `-shodan-query`, `-shodan-apikey` or the `SHODAN_API_KEY` env var, `-shodan-limit` and `-shodan-results`. It runs over the existing HTTP pool and needs no extra pip dependency.
 
-### Changed
-- **Bulk quiet mode (`gl_quiet`)** — suppresses per-host output during mass scans
-  so the progress bar and final findings stay readable; full per-vector detail is
-  printed after the sweep completes.
-- Documentation rewritten to highlight fork-specific features.
+Added an interactive authorization gate to the Shodan bulk scan workflow. The operator has to confirm authorization before any target collected from Shodan is scanned.
 
-### Housekeeping
-- Added `.gitignore` to prevent committing real target lists, scan results and
-  logs (`*.log`, `hosts*.txt`, `results*`).
-- Added `NOTICE` documenting upstream attribution and the modifications made in
-  this fork, as required by the Apache License 2.0.
+Added a live progress bar through `progress_bar_str` and `print_progress_bar`, a single line indicator shared across the bulk and file scan loops.
 
----
+Added a bulk quiet mode through `gl_quiet`. It hides the per host output during mass scans so the progress bar and the final findings stay readable. The full per vector detail is printed after the sweep finishes.
 
-Upstream original author: João Filho Matos Figueiredo · Apache-2.0.
-Fork enhancements © 2026 Rafael Macedo <rafael.macedo@brechasec.com.br>.
+Rewrote the documentation to focus on the fork specific features.
+
+Added a .gitignore so real target lists, scan results and logs never get committed. It covers log files, host lists and result files.
+
+Added a NOTICE file with the upstream attribution and the list of modifications made here, as the Apache License 2.0 requires.
+
+Upstream author João Filho Matos Figueiredo, Apache 2.0. Fork enhancements by Rafael Macedo, 2026, rafael.macedo@brechasec.com.br

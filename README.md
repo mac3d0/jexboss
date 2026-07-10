@@ -1,25 +1,20 @@
-# JexBoss — Enhanced Fork
+# JexBoss enhanced fork
 
-JBoss (and Java deserialization) verification & exploitation tool, extended with a **Shodan-driven bulk scanning workflow** and quality-of-life improvements for large engagements.
+A JBoss and Java deserialization verification and exploitation tool, extended with a Shodan driven bulk scanning workflow and some quality of life improvements for larger engagements.
 
-**Maintained by Rafael Macedo** · `rafael.macedo@brechasec.com.br` · [brechasec.com.br](https://brechasec.com.br/)
+Maintained by Rafael Macedo. Contact rafael.macedo@brechasec.com.br and https://brechasec.com.br/
 
----
+## What I added in this fork
 
-## ✨ Improvements in this fork
+The main addition is a new `shodan-scan` mode. It pulls candidate targets straight from the Shodan API through `shodan_search()`, with the flags `-shodan-query`, `-shodan-apikey`, `-shodan-limit` and `-shodan-results`. It talks to the API over the existing HTTP pool, so there is no extra pip dependency.
 
-These features were designed and implemented on top of the base tool:
+Before any Shodan bulk scan runs, there is an interactive authorization gate. The operator has to confirm they are allowed to test the collected targets. It is a scope and ethics check baked into the workflow.
 
-| Feature | Description |
-|---------|-------------|
-| **`shodan-scan` mode** | New operation mode that pulls candidate targets directly from the **Shodan API** (`shodan_search()`), with dedicated flags `-shodan-query`, `-shodan-apikey`, `-shodan-limit` and `-shodan-results`. No extra pip dependency — talks to the API over the existing HTTP pool. |
-| **Interactive authorization gate** | Before any Shodan-driven bulk scan runs, an explicit **authorization prompt** requires the operator to confirm they are permitted to test the collected targets — an ethics/scope guardrail baked into the workflow. |
-| **Bulk quiet mode (`gl_quiet`)** | Silences noisy per-host output during mass scans so results stay readable. |
-| **Live progress bar** | Single-line, in-place progress indicator (`print_progress_bar`) for bulk/file scan loops, shared across the Shodan and file-interactive views. |
+I also added a bulk quiet mode through `gl_quiet`, which silences the per host noise during mass scans so the output stays readable, and a live progress bar through `print_progress_bar`, a single line indicator shared across the Shodan and file scan loops.
 
-See [`CHANGELOG.md`](CHANGELOG.md) for the full list.
+The full list is in CHANGELOG.md.
 
-### Example
+Example:
 
 ```bash
 python jexboss.py -mode shodan-scan \
@@ -28,20 +23,15 @@ python jexboss.py -mode shodan-scan \
   -shodan-results report_shodan_scan.log
 ```
 
----
+## Legal and ethical use
 
-## ⚠️ Legal & ethical notice
+This tool is for study and authorized security testing only. Use it against systems you own or have explicit written authorization to test, under a signed engagement scope. Scanning or exploiting third party systems without permission is illegal and can carry criminal and civil liability.
 
-This tool is provided **strictly for educational purposes and authorized security testing**. Use it **only** against systems you own or for which you hold **explicit written authorization** (signed engagement scope). Unauthorized scanning or exploitation of third-party systems is illegal and may lead to criminal and civil liability.
-
-**Do not commit real target lists, scan results or logs** — the included `.gitignore` keeps `*.log`, `hosts*.txt` and result files out of version control.
-
----
+Do not commit real target lists, scan results or logs. The included .gitignore keeps log files, host lists and result files out of version control.
 
 ## Requirements
 
-* Python >= 2.7.x
-* [urllib3](https://pypi.python.org/pypi/urllib3) · [ipaddress](https://pypi.python.org/pypi/ipaddress)
+Python 2.7 or newer, plus urllib3 and ipaddress.
 
 ## Installation
 
@@ -58,19 +48,17 @@ python jexboss.py -h
 # Single host
 python jexboss.py -host http://target_host:8080
 
-# Bulk scan from a Shodan query (this fork)
+# Bulk scan from a Shodan query, added in this fork
 python jexboss.py -mode shodan-scan -shodan-query 'product:JBoss' -shodan-apikey YOUR_KEY
 
 # All modes and options
 python jexboss.py -h
 ```
 
----
-
 ## License
 
-Licensed under the **Apache License, Version 2.0** — see [`LICENSE`](LICENSE).
+Licensed under the Apache License, Version 2.0. See the LICENSE file.
 
 ## Credits
 
-Built on top of **JexBoss**, originally created by João Filho Matos Figueiredo ([upstream project](https://github.com/joaomatosf/jexboss)); CSV helper by Sean Whalen. All upstream copyright and attribution notices are retained in [`NOTICE`](NOTICE), as required by the license. Enhancements in this fork © 2026 Rafael Macedo.
+This is built on top of JexBoss, originally created by João Filho Matos Figueiredo. The upstream project is at https://github.com/joaomatosf/jexboss and the CSV helper is by Sean Whalen. All upstream copyright and attribution notices are kept in the NOTICE file, as the license requires. The enhancements in this fork are by Rafael Macedo, 2026.

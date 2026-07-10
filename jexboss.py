@@ -859,7 +859,7 @@ def banner():
                  " | Educational fork & improvements:                     |\n"
                  " | Rafael Macedo <rafael.macedo@brechasec.com.br>       |\n"
                  " #______________________________________________________#\n")
-    print_and_flush(RED1 + " @version: %s  (educational fork)" % __version__)
+    print_and_flush(RED1 + " @version: %s  educational fork" % __version__)
     print_and_flush(GREEN + " * For authorized security testing and learning purposes only.")
     print_and_flush (ENDC)
 
