@@ -1,0 +1,33 @@
+JexBoss — Educational Fork
+==========================
+
+This product includes software originally developed by:
+
+    JexBoss: JBoss (and Java Deserialization Vulnerabilities) verify and
+    EXploitation Tool
+    Copyright 2013 João Filho Matos Figueiredo <joaomatosf@gmail.com>
+    Original project: https://github.com/joaomatosf/jexboss
+
+    CSV helper (jexcsv.py)
+    Copyright 2016 Sean Whalen
+
+Licensed under the Apache License, Version 2.0. See the LICENSE file.
+
+--------------------------------------------------------------------------
+Modifications
+--------------------------------------------------------------------------
+
+This repository is a fork maintained for educational and authorized security
+testing purposes.
+
+    Modifications Copyright 2026 Rafael Macedo
+    <rafael.macedo@brechasec.com.br>
+
+Per Section 4(b) of the Apache License 2.0, notice is given that files in
+this distribution have been modified from the original work. Changes include
+documentation, usability adjustments to the interactive workflow, and
+maintenance updates. All original copyright, license and attribution notices
+of the upstream authors are retained.
+
+This fork does not claim authorship of the original tool. Full credit for the
+core tool belongs to João Filho Matos Figueiredo and the upstream contributors.

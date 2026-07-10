@@ -1,0 +1,15 @@
+# Never commit real targets, scan results or logs
+*.log
+hosts.txt
+hosts-*.txt
+hosts-testados/
+results*.txt
+*results*.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
